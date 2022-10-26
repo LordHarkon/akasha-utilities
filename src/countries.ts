@@ -1256,6 +1256,12 @@ const countries = [
     },
 ];
 
+type CountryType = {
+    name: string;
+    code: string;
+    currency: string;
+};
+
 export const getCountries = (): string[] => countries.map((country) => country.name);
 export const getCountriesName = (): string[] => countries.map((country) => country.name);
 export const getCountriesCode = (): string[] => countries.map((country) => country.code);
@@ -1271,8 +1277,8 @@ export const getCountryCurrency = (countryNameOrCode: string): string => {
 };
 export const getCountriesWithCurrency = (currency: string): string[] =>
     countries.filter((country) => country.currency === currency).map((country) => country.name);
-export const getCountriesRegexName = (reg: string | RegExp): string[] =>
+export const getCountriesRegexName = (reg: string | RegExp): CountryType[] =>
     countries.filter((country) => !!country.name.match(reg).length);
-export const getCountriesRegexCode = (reg: string | RegExp): string[] =>
+export const getCountriesRegexCode = (reg: string | RegExp): CountryType[] =>
     countries.filter((country) => !!country.name.match(reg).length);
-export const allCountries = [...countries];
+export const allCountries: CountryType[] = [...countries];
